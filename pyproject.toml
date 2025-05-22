@@ -1,0 +1,38 @@
+[project]
+name = "nanogpt"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=3.6.0",
+    "numpy>=2.2.6",
+    "tiktoken>=0.9.0",
+    "torch>=2.6.0",
+    "tqdm>=4.67.1",
+    "transformers>=4.52.2",
+    "wandb>=0.19.11",
+]
+
+[tool.uv]
+index-url = "https://mirror.nju.edu.cn/pypi/web/simple"
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu", marker = "sys_platform == 'darwin'" },
+    { index = "pytorch-cu124", marker = "sys_platform != 'darwin'" },
+]
+torchvision = [
+    { index = "pytorch-cpu", marker = "sys_platform == 'darwin'" },
+    { index = "pytorch-cu124", marker = "sys_platform != 'darwin'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
